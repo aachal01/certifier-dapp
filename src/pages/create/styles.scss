@@ -1,0 +1,18 @@
+.create-page {
+    min-height: calc(100vh - 32px);
+    display: grid;
+    grid-template-columns: 156px 5fr 6fr;
+    gap: 16px;
+    padding: 16px;
+    background: hsl(0, 0%, 90%);
+
+}
+
+.editor {    
+    background: blue;
+}
+
+.preview {    
+    background: green;
+}
+

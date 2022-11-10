@@ -1,0 +1,22 @@
+.side-nav {    
+    background: hsl(0, 0%, 100%);
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 34px;
+    overflow: hidden;
+    a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        aspect-ratio: 6/5;
+        text-decoration: none;
+        &:hover svg, &:hover div{
+            fill: hsl(0, 0%, 30%);
+            color: hsl(0, 0%, 30%);
+        }
+
+    }
+}

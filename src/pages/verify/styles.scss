@@ -1,0 +1,18 @@
+.verify-page {
+    min-height: calc(100vh - 32px);
+    display: grid;
+    grid-template-columns: 156px 6fr 5fr;
+    gap: 16px;
+    padding: 16px;
+    background: hsl(0, 0%, 90%);
+
+}
+
+.verify {    
+    background: blue;
+}
+
+.preview {    
+    background: green;
+}
+
