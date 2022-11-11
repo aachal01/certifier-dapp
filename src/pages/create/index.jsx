@@ -1,6 +1,6 @@
 import './styles.scss';
 import { SideNav } from '../../component/SideNav';
-import { Preview } from '../../component/Preview';
+import {ReactComponent as VerifiedIcon} from '../../assets/verified.svg'
 
 export function CreatePage() {
     return (
@@ -37,7 +37,16 @@ export function CreatePage() {
             </div>
 
             {/* Certificate preview */}
-            <div className='preview'> <Preview/> </div>
+            <div className='certificate-card'>
+                <div className='card1'>
+                    <div className='title'>Title: Certification of blockchain</div>
+                    <div className='cid'>Certificate ID: 123456789010101001001</div>
+                </div>
+                <div className='card2'>
+                    <div className='title'>Title: Certification of blockchain</div>
+                    <div className='cid'>Certificate ID: 123456789010101001001</div>
+                </div>
+            </div>
         </div>
     )
 }
