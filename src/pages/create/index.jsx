@@ -13,7 +13,13 @@ export function CreatePage() {
     const expireAt = useRef(null)
     const createdAt = useRef(null)
     const description = useRef(null)
-    
+
+    const onConnect = async () => {
+        const account = await web3.getAccount()
+        const certificates = await web3.getCertificateByIssuer(account.address)
+        setCertificates(certificates.reverse())
+    }
+
     const handleCreate = async () => {
         const certificate = await web3.createCertificate({
             issuedTo: issuedTo.current.value,
@@ -29,7 +35,7 @@ export function CreatePage() {
     return (
         <div className='create-page'>
             {/* Sidenav */}
-            <SideNav verify={true}/>
+            <SideNav verify={true} connectedCallback={onConnect}/>
 
             {/* Certificate editor */}
             <div className='editor'>
@@ -64,21 +70,19 @@ export function CreatePage() {
             </div>
 
             {/* Certificate preview */}
-            <div className='certificate-card'>
+            <div className='certificate-card preview'>
                 {certificates.map(c =>
-                    <div className='card'>
+                    <div className='card' key={c.id}>
                         <div className='card1'>
                             <div className='title'>Title: {c.data.title}</div>
                             <div className='cid'>Certificate ID: {c.id}</div>
+                        <div className='Iby'>Issued By: {c.issuedBy}</div>
+                        <div className='Ito'>Issued to: {c.issuedTo}</div>
                         </div>
                         <div className='vicon'><VerifiedIcon/></div>
                     </div>
                 )}
-                {/* <div className='card'>
-                    <div className='title'>Title: Certification of blockchain</div>
-                    <div className='cid'>Certificate ID: 123456789010101001001</div>
-                    <div className='vicon'><VerifiedIcon/></div>
-                </div> */}
+
             </div>
         </div>
     )

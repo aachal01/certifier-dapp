@@ -18,13 +18,24 @@ class Web3Proxy {
         this.isConnected = this.provider && this.signer && this.contract;
     }
 
+    async getAccount() {
+        if(!this.isConnected) {
+            
+        }
+
+        const address = await this.signer.getAddress()
+        const balance = ethers.utils.formatEther(await this.signer.getBalance())
+    
+        return { address, balance }
+    }
+
     async createCertificate(data) {
         if(!this.isConnected)
             await this.connect()
 
         const certificate = {
             id: uuidv4(),
-            data: JSON.stringify(data),
+            data,
             issuedTo: data.issuedTo,
             expireAt: new Date(data.expireAt).toISOString(),
             createdAt: new Date(data.createdAt).toISOString(),
@@ -62,6 +73,7 @@ class Web3Proxy {
             id: entry.args.certificate.id,
             data: JSON.parse(entry.args.certificate.data),
             issuedTo: entry.args.certificate.issuedTo,
+            issuedBy: entry.args.certificate.issuedBy,
             expireAt: new Date(entry.args.certificate.expireAt),
             createdAt: new Date(entry.args.certificate.createdAt),
         }));
@@ -84,6 +96,7 @@ class Web3Proxy {
             id: entry.args.certificate.id,
             data: JSON.parse(entry.args.certificate.data),
             issuedTo: entry.args.certificate.issuedTo,
+            issuedBy: entry.args.certificate.issuedBy,
             expireAt: new Date(entry.args.certificate.expireAt),
             createdAt: new Date(entry.args.certificate.createdAt),
         }));

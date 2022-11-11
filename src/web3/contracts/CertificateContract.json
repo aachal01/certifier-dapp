@@ -9608,12 +9608,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xB74432BA5c5484C42648AF70C358FF957DB4CEB8",
-      "transactionHash": "0x16540f9cfa15293b3d8631fbcc180c26c3d3fb4c0b5908667599f2dc5eac3b07"
+      "address": "0x867aDCb7D555f52f253c557eC8614ceb01d47deB",
+      "transactionHash": "0x3e9ee5b6e6de39da7cc791e4ea16aba9e332c8d21db2e12c3d4d456303ef7fa2"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-11T11:14:29.449Z",
+  "updatedAt": "2022-11-11T16:53:06.318Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Implements Certificate Generation",
