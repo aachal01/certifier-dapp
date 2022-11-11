@@ -20,7 +20,8 @@ class Web3Proxy {
 
     async getAccount() {
         if(!this.isConnected) {
-            
+            alert("Connect Your Account to Continue!")
+            return { address: '', balance: ''}
         }
 
         const address = await this.signer.getAddress()
@@ -29,12 +30,14 @@ class Web3Proxy {
         return { address, balance }
     }
 
-    async createCertificate(data) {
-        if(!this.isConnected)
-            await this.connect()
+    async createCertificate(data, id) {
+        if(!this.isConnected) {
+            alert("Connect Your Account to Continue!")
+            return []
+        }
 
         const certificate = {
-            id: uuidv4(),
+            id: id || uuidv4(),
             data,
             issuedTo: data.issuedTo,
             expireAt: new Date(data.expireAt).toISOString(),
@@ -57,13 +60,15 @@ class Web3Proxy {
     }
 
     async getCertificateById(id) {
-        if(!this.isConnected)
-            await this.connect()
+        if(!this.isConnected) {
+            alert("Connect Your Account to Continue!")
+            return []
+        }
 
         const filter = await this.contract.filters.CertificateWrite(
             null,
             null,
-            id.current.value,
+            id,
             null
         );
     
@@ -80,8 +85,10 @@ class Web3Proxy {
     }
 
     async getCertificateByIssuer(address) {
-        if(!this.isConnected)
-            await this.connect()
+        if(!this.isConnected) {
+            alert("Connect Your Account to Continue!")
+            return []
+        }
 
         const filter = await this.contract.filters.CertificateWrite(
             address,
@@ -92,7 +99,7 @@ class Web3Proxy {
     
         const entries = await this.contract.queryFilter(filter)
 
-        const certificates = entries.map(entry => ({
+        let certificates = entries.map(entry => ({
             id: entry.args.certificate.id,
             data: JSON.parse(entry.args.certificate.data),
             issuedTo: entry.args.certificate.issuedTo,
@@ -100,6 +107,17 @@ class Web3Proxy {
             expireAt: new Date(entry.args.certificate.expireAt),
             createdAt: new Date(entry.args.certificate.createdAt),
         }));
+
+        const set = new Set()
+        certificates.reverse()
+
+        certificates = certificates.filter(c => {
+            if(!set.has(c.id)) {
+                set.add(c.id)
+                return true
+            }
+            return false
+        })
 
         return certificates;
     }

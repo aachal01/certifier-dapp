@@ -40,6 +40,7 @@
                 border-color: rgb(243 244 246);
                 background-color: rgb(243 244 246);
                 outline: none;
+                cursor: text;
                 &, &::placeholder {
                     color: rgb(88, 88, 88);
                 }
@@ -64,20 +65,28 @@
             position: sticky;
             bottom: 0;
         }
-        textarea {
-            resize: vertical; 
-        }
     }
 
     .certificate-card {
         border-radius: 24px;
         .card {
             background: hsl(0, 0%, 100%);
+            border: 2px solid hsl(0, 0%, 100%);
             margin: 16px;
             padding: 32px;
             display:flex;
             border-radius: 24px;
             justify-content: space-between;
+            cursor: pointer;
+
+            // .Iby, .Ito {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: " [..]";
+            // }
+        }
+        .card.selected {
+            border: 2px solid rgb(32 14 50);
         }
         .header {
             position: sticky;
