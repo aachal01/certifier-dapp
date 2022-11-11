@@ -46,7 +46,7 @@ export function CreatePage() {
         description.current.innerText = certificate?.data.description || ''
         createdAt.current.value = certificate?.createdAt ? certificate.createdAt.toISOString().split('T')[0] : ''
         expireAt.current.value = certificate?.expireAt ? certificate.expireAt.toISOString().split('T')[0] : ''
-    }, [id])
+    }, [id, certificates])
 
 
     return (

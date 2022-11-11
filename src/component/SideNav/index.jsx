@@ -9,7 +9,7 @@ import web3 from '../../web3/proxy';
 export function SideNav({ verify, create, connectedCallback }) {
 
     const [connection, setConnection] = useState({ connected: web3.isConnected, loading: false })
-    const [account, setAccount] = useState(false)
+    const [account, setAccount] = useState(web3.account)
 
     if(connection.connected && connectedCallback) connectedCallback() 
 
@@ -43,7 +43,7 @@ export function SideNav({ verify, create, connectedCallback }) {
             }
 
             <span onClick={handleConnect}
-                title={!connection.loading && connection.connected && account.address}
+                title={!connection.loading && connection.connected ? account.address : ''}
             > 
                 <AccountIcon/>
                 <div>

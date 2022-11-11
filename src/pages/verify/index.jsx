@@ -1,7 +1,7 @@
 import './styles.scss';
 import { SideNav } from '../../component/SideNav';
 import {ReactComponent as VerifiedIcon} from '../../assets/verified.svg'
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import web3 from '../../web3/proxy';
 
 export function VerifyPage() {

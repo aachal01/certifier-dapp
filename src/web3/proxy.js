@@ -9,6 +9,7 @@ class Web3Proxy {
     contract = null
     signer = null
     isConnected = false;
+    account = { address: '', balance: ''}
 
     async connect() {
         this.provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -16,18 +17,20 @@ class Web3Proxy {
         this.signer = this.provider.getSigner()
         this.contract = new ethers.Contract(contractAddress, abi, this.signer);
         this.isConnected = this.provider && this.signer && this.contract;
+        await this.getAccount()
     }
 
     async getAccount() {
         if(!this.isConnected) {
             alert("Connect Your Account to Continue!")
-            return { address: '', balance: ''}
+            this.account = { address: '', balance: ''}
+            return this.account
         }
 
         const address = await this.signer.getAddress()
         const balance = ethers.utils.formatEther(await this.signer.getBalance())
     
-        return { address, balance }
+        return this.account = { address, balance }
     }
 
     async createCertificate(data, id) {
