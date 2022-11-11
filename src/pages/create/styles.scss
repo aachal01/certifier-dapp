@@ -67,6 +67,15 @@
             resize: vertical; 
         }
     }
+
+    .certificate-card {
+        .card {
+            background: hsl(0, 0%, 100%);
+            margin: 16px;
+            padding: 16px;
+            display:flex;
+        }
+    }
 }
 
 

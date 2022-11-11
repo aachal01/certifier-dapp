@@ -12,16 +12,19 @@ class Web3Proxy {
 
     async connect() {
         this.provider = new ethers.providers.Web3Provider(window.ethereum)
-        await provider.send("eth_requestAccounts", []);
-        this.signer = provider.getSigner()
-        this.contract = new ethers.Contract(contractAddress, abi, signer);
+        await this.provider.send("eth_requestAccounts", []);
+        this.signer = this.provider.getSigner()
+        this.contract = new ethers.Contract(contractAddress, abi, this.signer);
         this.isConnected = this.provider && this.signer && this.contract;
     }
 
     async createCertificate(data) {
+        if(!this.isConnected)
+            await this.connect()
+
         const certificate = {
             id: uuidv4(),
-            data,
+            data: JSON.stringify(data),
             issuedTo: data.issuedTo,
             expireAt: new Date(data.expireAt).toISOString(),
             createdAt: new Date(data.createdAt).toISOString(),
@@ -29,7 +32,7 @@ class Web3Proxy {
 
         const tx = await this.contract.functions.create(
             certificate.id,
-            certificate.data,
+            JSON.stringify(certificate.data),
             certificate.issuedTo,
             certificate.expireAt,
             certificate.createdAt,
@@ -46,14 +49,14 @@ class Web3Proxy {
         if(!this.isConnected)
             await this.connect()
 
-        const filter = await contract.filters.CertificateWrite(
+        const filter = await this.contract.filters.CertificateWrite(
             null,
             null,
             id.current.value,
             null
         );
     
-        const entries = await contract.queryFilter(filter)
+        const entries = await this.contract.queryFilter(filter)
 
         return entries.map(entry => ({
             id: entry.args.certificate.id,
@@ -68,14 +71,14 @@ class Web3Proxy {
         if(!this.isConnected)
             await this.connect()
 
-        const filter = await contract.filters.CertificateWrite(
+        const filter = await this.contract.filters.CertificateWrite(
             address,
             null,
             null,
             null
         );
     
-        const entries = await contract.queryFilter(filter)
+        const entries = await this.contract.queryFilter(filter)
 
         const certificates = entries.map(entry => ({
             id: entry.args.certificate.id,

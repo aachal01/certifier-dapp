@@ -106,7 +106,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -9603,9 +9604,17 @@
     "name": "solc",
     "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xB74432BA5c5484C42648AF70C358FF957DB4CEB8",
+      "transactionHash": "0x16540f9cfa15293b3d8631fbcc180c26c3d3fb4c0b5908667599f2dc5eac3b07"
+    }
+  },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-11T09:43:44.236Z",
+  "updatedAt": "2022-11-11T11:14:29.449Z",
+  "networkType": "ethereum",
   "devdoc": {
     "details": "Implements Certificate Generation",
     "kind": "dev",
