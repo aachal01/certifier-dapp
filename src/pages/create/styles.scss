@@ -70,6 +70,7 @@
     }
 
     .certificate-card {
+        border-radius: 24px;
         .card {
             background: hsl(0, 0%, 100%);
             margin: 16px;
@@ -77,6 +78,10 @@
             display:flex;
             border-radius: 24px;
             justify-content: space-between;
+        }
+        .header {
+            position: sticky;
+            top: 0;
         }
         .vicon {
             align-self: center;

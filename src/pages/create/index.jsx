@@ -71,6 +71,7 @@ export function CreatePage() {
 
             {/* Certificate preview */}
             <div className='certificate-card preview'>
+                <h2 className='card header'>Certificates Issued By Me</h2>
                 {certificates.map(c =>
                     <div className='card' key={c.id}>
                         <div className='card1'>
