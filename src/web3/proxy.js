@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import CertificateContract from './contracts/CertificateContract.json';
 const contractAddress = CertificateContract.networks[5777].address
@@ -22,7 +23,7 @@ class Web3Proxy {
 
     async getAccount() {
         if(!this.isConnected) {
-            alert("Connect Your Account to Continue!")
+            toast.info("Connect Your Account to Continue!")
             this.account = { address: '', balance: ''}
             return this.account
         }
@@ -35,7 +36,7 @@ class Web3Proxy {
 
     async createCertificate(data, id) {
         if(!this.isConnected) {
-            alert("Connect Your Account to Continue!")
+            toast.info("Connect Your Account to Continue!")
             return []
         }
 
@@ -54,17 +55,14 @@ class Web3Proxy {
             certificate.expireAt,
             certificate.createdAt,
         )
-        console.log("tx: ", tx);
-
         const receipt = await tx.wait();
-        console.log("receipt: ", receipt);
 
         return certificate;
     }
 
     async getCertificateById(id) {
         if(!this.isConnected) {
-            alert("Connect Your Account to Continue!")
+            toast.info("Connect Your Account to Continue!")
             return []
         }
 
@@ -89,7 +87,7 @@ class Web3Proxy {
 
     async getCertificateByIssuer(address) {
         if(!this.isConnected) {
-            alert("Connect Your Account to Continue!")
+            toast.info("Connect Your Account to Continue!")
             return []
         }
 
