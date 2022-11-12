@@ -1,70 +1,104 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Certifier Dapp
 
-## Available Scripts
+The Ethereum Blockchain based Certifier Dapp.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Signin with Ethereum Wallet (MetaMask)
+- Issue New Certificate
+- Update Issued Certificates
+- Verify Issued Certificates
+- Track Change history of Issued Certificates
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Authors
 
-### `npm test`
+- [@aachal01](https://www.github.com/aachal01)
+- [@jhasuraj01](https://www.github.com/jhasuraj01)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Web3
+- [Ethers.js](https://docs.ethers.io)
+- [Truffle](https://trufflesuite.com/docs/)
+- [Solidity](https://soliditylang.org/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Frontend
+- [React.js](https://reactjs.org)
+- [React Router](https://reactrouter.com/)
+- [React Toastify](https://fkhadra.github.io/react-toastify/)
+## Environment Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Download and install the latest node and npm from https://nodejs.org/en/download/
+- Download and install Visual Studio Code from https://code.visualstudio.com/
+- Download and install Ganache from https://trufflesuite.com/ganache/
+    - Create new Workspace
+    - Link this project to workspace
+    - Update port number to 8545
+    - ![Ganache Setup](https://user-images.githubusercontent.com/95211796/201491935-87f8d7cb-254e-40ff-aaae-290d25134be8.png)
 
-### `npm run eject`
+- Install Truffle `npm install truffle -g`
+- Link Metamask to Local Blockchain network created by Ganache
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Run Locally
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clone the project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  git clone https://github.com/aachal01/certifier-dapp.git
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Go to the project directory
 
-## Learn More
+```bash
+  cd certifier-dapp
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Install dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  npm install
+```
 
-### Code Splitting
+Deploy Smart Contract locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  npm run contract:deploy
+```
 
-### Analyzing the Bundle Size
+Start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+  npm run start
+```
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Screenshots
 
-### Advanced Configuration
+Link MetaMask Account
+![image](https://user-images.githubusercontent.com/95211796/201492972-eb48fcad-4dc0-4f36-b90a-7c5ce95d3a2b.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+View all the Issued Certificates by You!
+![image](https://user-images.githubusercontent.com/95211796/201492912-30767f59-dbe6-4b48-880b-288ff630ce84.png)
 
-### Deployment
+Create New Certificate
+![image](https://user-images.githubusercontent.com/95211796/201493658-e29db623-9fed-45d4-9e8b-4a9f89e8c4df.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Update Issued Certificate
+![image](https://user-images.githubusercontent.com/95211796/201493733-2d0d3a6f-c9d3-4a38-9e1b-d9ba53152b5e.png)
 
-### `npm run build` fails to minify
+Verify Certificate and view Change History
+![image](https://user-images.githubusercontent.com/95211796/201493785-5bfecdd4-8a63-4217-bdb6-ca4b6b8a3abd.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Transactions Preview in Ganache
+![Ganache Transactions Screenshots](https://user-images.githubusercontent.com/95211796/201492047-fb8dba47-ae70-4163-8ad3-bf193191126e.png)
+
+Deployed Smart Contract
+![Ganache Smart Contract Screenshots](https://user-images.githubusercontent.com/95211796/201492116-f163e22e-a9e7-400b-abbd-291780756fec.png)
+
+
+## Appendix
+
+This project was created as a semester course work for the Blockchain Honor Degree at Pimpri Chinchwad College Of Engineering.
