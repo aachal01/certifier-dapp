@@ -1,5 +1,5 @@
 
-# Certifier Dapp - The Ethereum Blockchain based Certifier Dapp.
+# Certifier Dapp - Decentralized and Secured Certification System using Blockchain
 
 Certifier Dapp is a web application built on the Ethereum blockchain that allows users to issue, update, verify and track the change history of certificates. It is built using Web3, Ethers.js, Truffle, and Solidity for the backend and React.js for the frontend. It demonstrates the power and potential of blockchain technology in the field of certification.
 
